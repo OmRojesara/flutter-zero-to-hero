@@ -1,246 +1,210 @@
-// Classes, Objects, and Constructors in Dart
-// This program demonstrates object-oriented programming concepts in Dart
-// which are fundamental to Flutter development
+// Classes and Objects in Dart - Simple Examples for Beginners
+// Classes are like blueprints for creating objects
 
 void main() {
-  print('=== Dart Classes and Objects Demo ===\n');
+  print('=== Learning Classes and Objects in Dart ===\n');
   
-  demonstrateBasicClass();
-  demonstrateNamedConstructors();
-  demonstrateOptionalParameters();
-  demonstrateInheritance();
-  demonstrateStaticMembers();
+  // 1. Creating simple objects from our Student class
+  learnAboutStudents();
+  
+  // 2. Creating objects with different constructors
+  learnAboutConstructors();
+  
+  // 3. Creating objects with optional information
+  learnAboutOptionalInfo();
+  
+  // 4. Learning about inheritance (one class using another)
+  learnAboutInheritance();
+  
+  print('\n=== Classes help organize related data and functions! ===');
 }
 
-void demonstrateBasicClass() {
-  print('--- BASIC CLASS ---');
+void learnAboutStudents() {
+  print('--- CREATING STUDENT OBJECTS ---');
   
-  // Creating objects using the default constructor
-  Person person1 = Person('Alice', 25);
-  Person person2 = Person('Bob', 30);
+  // Creating a student object - like filling out a form
+  Student student1 = Student('Om', 20, 'Computer Science');
+  Student student2 = Student('Abhishek', 22, 'Engineering');
   
-  // Calling methods on objects
-  person1.introduce();
-  person2.introduce();
+  // Getting information about students
+  student1.introduce();
+  student2.introduce();
   
-  // Accessing properties
-  print('${person1.name} is ${person1.age} years old');
+  // Changing student information
+  print('\n${student1.name} got older!');
+  student1.age = 21;
+  student1.introduce();
   
-  // Modifying properties
-  person1.age = 26;
-  print('After birthday: ${person1.name} is ${person1.age} years old');
-  
-  // Using getter
-  print('${person1.name} is ${person1.isAdult ? 'an adult' : 'a minor'}');
-  
-  // Using setter
-  person1.age = 17;
-  print('After setting age to 17: ${person1.name} is ${person1.isAdult ? 'an adult' : 'a minor'}');
+  // Checking if student can vote
+  print('${student1.name} can vote: ${student1.canVote ? 'Yes' : 'No'}');
+  print('${student2.name} can vote: ${student2.canVote ? 'Yes' : 'No'}');
   
   print('');
 }
 
-void demonstrateNamedConstructors() {
-  print('--- NAMED CONSTRUCTORS ---');
+void learnAboutConstructors() {
+  print('--- DIFFERENT WAYS TO CREATE STUDENTS ---');
   
-  // Using named constructor for guest user
-  Person guest = Person.guest();
-  guest.introduce();
+  // Using default constructor
+  Student regularStudent = Student('Akshit', 19, 'Physics');
+  regularStudent.introduce();
   
-  // Using named constructor for VIP user
-  Person vip = Person.vip('John', 35, 'Gold');
-  vip.introduce();
+  // Using named constructor for exchange student
+  Student exchangeStudent = Student.exchange('Kartik', 21, 'Chemistry', 'Germany');
+  exchangeStudent.introduce();
   
-  // Using factory constructor
-  Person admin = Person.admin('Admin User');
-  admin.introduce();
+  // Using named constructor for guest student
+  Student guestStudent = Student.guest();
+  guestStudent.introduce();
   
   print('');
 }
 
-void demonstrateOptionalParameters() {
-  print('--- OPTIONAL PARAMETERS ---');
+void learnAboutOptionalInfo() {
+  print('--- STUDENTS WITH OPTIONAL INFORMATION ---');
   
-  // Creating objects with different parameter combinations
-  Product laptop = Product(
-    name: 'Laptop',
-    price: 999.99,
-    category: 'Electronics',
+  // Creating students with different amounts of information
+  StudentInfo student1 = StudentInfo(
+    name: 'Hardik',
+    age: 20,
+    course: 'Mathematics',
+    hostel: 'Block A',
   );
   
-  Product book = Product(
-    name: 'Dart Programming',
-    price: 29.99,
+  StudentInfo student2 = StudentInfo(
+    name: 'Anand',
+    age: 21,
+    // course and hostel will use default values
   );
   
-  Product mystery = Product(
-    name: 'Mystery Item',
-  );
-  
-  laptop.displayInfo();
-  book.displayInfo();
-  mystery.displayInfo();
+  student1.displayInfo();
+  student2.displayInfo();
   
   print('');
 }
 
-void demonstrateInheritance() {
-  print('--- INHERITANCE ---');
+void learnAboutInheritance() {
+  print('--- INHERITANCE (ONE CLASS USING ANOTHER) ---');
   
-  // Creating objects of different types
-  Animal genericAnimal = Animal('Unknown', 4);
-  Dog dog = Dog('Buddy', 'Golden Retriever');
-  Cat cat = Cat('Whiskers', 'Persian');
+  // Creating different types of people
+  Person genericPerson = Person('Unknown', 25);
+  StudentPerson student = StudentPerson('Om', 20, 'Computer Science');
+  Teacher teacher = Teacher('Dr. Sharma', 35, 'Computer Science');
   
-  // Calling methods
-  genericAnimal.makeSound();
-  dog.makeSound();
-  cat.makeSound();
+  // All of them can introduce themselves
+  genericPerson.introduce();
+  student.introduce();
+  teacher.introduce();
   
-  // Using polymorphism
-  List<Animal> animals = [genericAnimal, dog, cat];
-  print('\nAll animals making sounds:');
-  for (Animal animal in animals) {
-    animal.makeSound();
-  }
+  // But teachers have special methods
+  teacher.teach();
   
   print('');
 }
 
-void demonstrateStaticMembers() {
-  print('--- STATIC MEMBERS ---');
-  
-  // Accessing static properties
-  print('Total persons created: ${Person.totalCount}');
-  print('Current year: ${Person.currentYear}');
-  
-  // Calling static methods
-  Person.printInfo();
-  
-  // Creating more objects to see count increase
-  Person person3 = Person('Charlie', 28);
-  Person person4 = Person('Diana', 32);
-  
-  print('After creating more persons: ${Person.totalCount}');
-}
-
-// Basic class with constructor and methods
-class Person {
-  // Instance variables
+// Simple Student class - like a template for student information
+class Student {
+  // What information each student has
   String name;
   int _age;  // Private field
+  String course;
   
-  // Static variables (shared across all instances)
-  static int totalCount = 0;
-  static int currentYear = 2024;
+  // Constructor - like a form to fill when creating a student
+  Student(this.name, int age, this.course) : _age = age;
   
-  // Default constructor
-  Person(this.name, int age) : _age = age {
-    totalCount++; // Increment count when new person is created
+  // Named constructor for exchange students
+  Student.exchange(String name, int age, String course, String country) 
+      : name = name, _age = age, course = course {
+    print('Welcome exchange student from $country!');
   }
   
-  // Named constructor for guest users
-  Person.guest() : name = 'Guest', _age = 18 {
-    totalCount++;
-  }
-  
-  // Named constructor for VIP users
-  Person.vip(String name, int age, String level) : name = name, _age = age {
-    totalCount++;
-    print('VIP $level member created');
-  }
-  
-  // Factory constructor - returns existing instance or creates new one
-  factory Person.admin(String name) {
-    // In a real app, you might check if admin already exists
-    return Person(name, 25);
+  // Named constructor for guest students
+  Student.guest() : name = 'Guest', _age = 18, course = 'General' {
+    print('Guest student created');
   }
   
   // Public getter for age
   int get age => _age;
   
-  // Getter - computed property
-  bool get isAdult => _age >= 18;
+  // Getter - checks if student is old enough to vote
+  bool get canVote => _age >= 18;
   
-  // Setter - can add validation
-  set age(int value) {
-    if (value >= 0) {
-      _age = value;
+  // Setter - allows changing age with validation
+  set age(int newAge) {
+    if (newAge > 0) {
+      _age = newAge;
     } else {
-      print('Age cannot be negative');
+      print('Age cannot be negative!');
     }
   }
   
-  // Instance method
+  // Method - what a student can do
   void introduce() {
-    print('Hi, I am $name and I am $_age years old');
-  }
-  
-  // Static method
-  static void printInfo() {
-    print('Person class info:');
-    print('Total persons: $totalCount');
-    print('Current year: $currentYear');
+    print('Hi! I am $name, $_age years old, studying $course');
   }
 }
 
 // Class with optional parameters
-class Product {
+class StudentInfo {
   String name;
-  double price;
-  String category;
-  bool inStock;
+  int age;
+  String course;
+  String hostel;
   
-  // Constructor with optional parameters
-  Product({
+  // Constructor with some optional parameters
+  StudentInfo({
     required this.name,
-    this.price = 0.0,
-    this.category = 'General',
-    this.inStock = true,
+    required this.age,
+    this.course = 'General Studies',
+    this.hostel = 'Not Assigned',
   });
   
   void displayInfo() {
-    print('Product: $name');
-    print('  Price: \$${price.toStringAsFixed(2)}');
-    print('  Category: $category');
-    print('  In Stock: ${inStock ? 'Yes' : 'No'}');
-    print('');
+    print('\nStudent Information:');
+    print('Name: $name');
+    print('Age: $age');
+    print('Course: $course');
+    print('Hostel: $hostel');
   }
 }
 
 // Base class for inheritance example
-class Animal {
+class Person {
   String name;
-  int legs;
+  int age;
   
-  Animal(this.name, this.legs);
+  Person(this.name, this.age);
   
-  void makeSound() {
-    print('$name makes a generic sound');
+  void introduce() {
+    print('Hello, I am $name, $age years old');
   }
 }
 
-// Derived class inheriting from Animal
-class Dog extends Animal {
-  String breed;
+// Student class inheriting from Person
+class StudentPerson extends Person {
+  String course;
   
-  // Call super constructor and initialize breed
-  Dog(String name, this.breed) : super(name, 4);
+  // Call parent constructor and initialize course
+  StudentPerson(String name, int age, this.course) : super(name, age);
   
   @override
-  void makeSound() {
-    print('$name the $breed barks: Woof! Woof!');
+  void introduce() {
+    print('Hi! I am $name, $age years old, studying $course');
   }
 }
 
-// Another derived class
-class Cat extends Animal {
-  String breed;
+// Teacher class also inheriting from Person
+class Teacher extends Person {
+  String subject;
   
-  Cat(String name, this.breed) : super(name, 4);
+  Teacher(String name, int age, this.subject) : super(name, age);
   
   @override
-  void makeSound() {
-    print('$name the $breed meows: Meow!');
+  void introduce() {
+    print('Hello, I am $name, $age years old, teaching $subject');
+  }
+  
+  void teach() {
+    print('$name is teaching $subject to students');
   }
 }

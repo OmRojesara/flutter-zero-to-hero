@@ -1,23 +1,30 @@
-// Control Flow in Dart - If, Else, Switch, Loops
-// This program demonstrates various control flow statements
-// that are essential for programming logic
+// Control Flow in Dart - Simple Examples for Beginners
+// Control flow is like making decisions in your code
 
 void main() {
-  print('=== Dart Control Flow Demo ===\n');
+  print('=== Learning Control Flow in Dart ===\n');
   
-  demonstrateIfElse();
-  demonstrateSwitchCase();
-  demonstrateLoops();
-  demonstrateBreakContinue();
-  demonstrateConditionalExpressions();
+  // 1. Learning about if-else statements (making decisions)
+  learnAboutIfElse();
+  
+  // 2. Learning about switch statements (multiple choices)
+  learnAboutSwitch();
+  
+  // 3. Learning about loops (repeating things)
+  learnAboutLoops();
+  
+  // 4. Learning about break and continue
+  learnAboutBreakContinue();
+  
+  print('\n=== Control flow helps your code make decisions! ===');
 }
 
-void demonstrateIfElse() {
-  print('--- IF-ELSE STATEMENTS ---');
+void learnAboutIfElse() {
+  print('--- IF-ELSE STATEMENTS (Making Decisions) ---');
   
   int age = 18;
   bool hasLicense = true;
-  bool isStudent = false;
+  bool isStudent = true;
   
   // Basic if statement
   if (age >= 18) {
@@ -63,8 +70,8 @@ void demonstrateIfElse() {
   print('');
 }
 
-void demonstrateSwitchCase() {
-  print('--- SWITCH-CASE STATEMENTS ---');
+void learnAboutSwitch() {
+  print('--- SWITCH STATEMENTS (Multiple Choices) ---');
   
   String dayOfWeek = 'Monday';
   
@@ -135,8 +142,8 @@ void demonstrateSwitchCase() {
   print('');
 }
 
-void demonstrateLoops() {
-  print('--- LOOPS ---');
+void learnAboutLoops() {
+  print('--- LOOPS (Repeating Things) ---');
   
   // 1. For loop with counter
   print('Counting from 1 to 5:');
@@ -145,21 +152,21 @@ void demonstrateLoops() {
   }
   
   // 2. For loop with list
-  List<String> fruits = ['Apple', 'Banana', 'Orange', 'Mango'];
-  print('\nFruits:');
-  for (int i = 0; i < fruits.length; i++) {
-    print('${i + 1}. ${fruits[i]}');
+  List<String> friends = ['Om', 'Abhishek', 'Akshit', 'Kartik'];
+  print('\nMy friends:');
+  for (int i = 0; i < friends.length; i++) {
+    print('${i + 1}. ${friends[i]}');
   }
   
   // 3. For-in loop (iterate over elements)
-  print('\nFruits (for-in):');
-  for (String fruit in fruits) {
-    print('Fruit: $fruit');
+  print('\nFriends (for-in):');
+  for (String friend in friends) {
+    print('Friend: $friend');
   }
   
   // 4. ForEach loop
-  print('\nFruits (forEach):');
-  fruits.forEach((fruit) => print('Fruit: $fruit'));
+  print('\nFriends (forEach):');
+  friends.forEach((friend) => print('Friend: $friend'));
   
   // 5. While loop
   print('\nCounting down from 5:');
@@ -199,7 +206,7 @@ void demonstrateLoops() {
   print('');
 }
 
-void demonstrateBreakContinue() {
+void learnAboutBreakContinue() {
   print('--- BREAK AND CONTINUE ---');
   
   // Break example - finding first even number
@@ -236,50 +243,6 @@ void demonstrateBreakContinue() {
       print('i=$i, j=$j');
     }
   }
-  
-  print('');
-}
-
-void demonstrateConditionalExpressions() {
-  print('--- CONDITIONAL EXPRESSIONS ---');
-  
-  int age = 20;
-  bool isStudent = true;
-  
-  // Ternary operator (condition ? value1 : value2)
-  String status = age >= 18 ? 'Adult' : 'Minor';
-  print('Status: $status');
-  
-  // Nested ternary operators
-  String category = age < 13 ? 'Child' : 
-                   age < 20 ? 'Teenager' : 
-                   age < 65 ? 'Adult' : 'Senior';
-  print('Category: $category');
-  
-  // Conditional expressions with null safety
-  String? userName;
-  String displayName = userName ?? 'Guest';
-  print('Display name: $displayName');
-  
-  // Conditional expressions in variable assignment
-  int maxScore = 100;
-  int currentScore = 85;
-  int bonus = currentScore >= 90 ? 10 : 0;
-  
-  print('Current score: $currentScore');
-  print('Bonus: $bonus');
-  print('Final score: ${currentScore + bonus}');
-  
-  // Conditional expressions with function calls
-  String message = isStudent ? 
-                   'Welcome, student!' : 
-                   'Welcome, visitor!';
-  print('Message: $message');
-  
-  // Using conditional expressions for simple logic
-  List<int> scores = [85, 92, 78, 96, 88];
-  int highestScore = scores.reduce((a, b) => a > b ? a : b);
-  print('Highest score: $highestScore');
   
   print('');
 }

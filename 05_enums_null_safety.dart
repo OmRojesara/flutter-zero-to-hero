@@ -1,98 +1,106 @@
-// Enums and Null Safety in Dart
-// This program demonstrates how to use enums for fixed choices
-// and how null safety prevents runtime crashes
+// Enums and Null Safety in Dart - Simple Examples for Beginners
+// Enums are like a list of choices, null safety prevents crashes
 
 void main() {
-  print('=== Dart Enums and Null Safety Demo ===\n');
+  print('=== Learning Enums and Null Safety in Dart ===\n');
   
-  demonstrateEnums();
-  demonstrateNullSafety();
-  demonstrateLateVariables();
-  demonstrateNullAwareOperators();
+  // 1. Learning about enums (fixed choices)
+  learnAboutEnums();
+  
+  // 2. Learning about null safety (preventing crashes)
+  learnAboutNullSafety();
+  
+  // 3. Learning about late variables
+  learnAboutLateVariables();
+  
+  // 4. Learning about null-aware operators
+  learnAboutNullOperators();
+  
+  print('\n=== Enums and null safety make your code safer! ===');
 }
 
-void demonstrateEnums() {
-  print('--- ENUMS ---');
+void learnAboutEnums() {
+  print('--- ENUMS (Fixed Choices) ---');
   
-  // Enums are perfect for representing fixed sets of values
-  UserRole currentRole = UserRole.editor;
-  ButtonType buttonType = ButtonType.primary;
+  // Enums are like a menu with limited options
+  UserRole myRole = UserRole.student;
+  ButtonType myButton = ButtonType.primary;
   
-  print('Current user role: $currentRole');
-  print('Button type: $buttonType');
+  print('My role: $myRole');
+  print('Button type: $myButton');
   
   // Using enums in switch statements
-  describeUserRole(currentRole);
+  describeMyRole(myRole);
   
-  // Accessing enum properties
-  print('Role name: ${currentRole.name}');
-  print('Role index: ${currentRole.index}');
+  // Getting information about enums
+  print('Role name: ${myRole.name}');
+  print('Role number: ${myRole.index}');
   
-  // Iterating through all enum values
+  // Seeing all available roles
   print('\nAll available roles:');
   for (UserRole role in UserRole.values) {
     print('- ${role.name}');
   }
   
-  // Using enums for UI state management
+  // Using enums for app states
   AppState currentState = AppState.loading;
   print('\nApp state: $currentState');
   
-  // Simulating state changes
+  // Changing state
   currentState = AppState.loaded;
   print('After loading: $currentState');
   
-  // Using enums for status messages
-  print('\n--- STATUS MESSAGES ---');
-  StatusMessage message = StatusMessage.success;
-  StatusMessage error = StatusMessage.error;
+  // Using enums for messages
+  print('\n--- MESSAGE TYPES ---');
+  MessageType success = MessageType.success;
+  MessageType error = MessageType.error;
   
-  handleStatusMessage(message);
-  handleStatusMessage(error);
+  showMessage(success);
+  showMessage(error);
   
   print('');
 }
 
-void demonstrateNullSafety() {
-  print('--- NULL SAFETY ---');
+void learnAboutNullSafety() {
+  print('--- NULL SAFETY (Preventing Crashes) ---');
   
-  // 1. Non-nullable variables (must be initialized)
-  String name = 'John Doe';
-  int age = 25;
+  // 1. Variables that must have a value (non-nullable)
+  String myName = 'Om';
+  int myAge = 20;
   
-  print('Name: $name');
-  print('Age: $age');
+  print('My name: $myName');
+  print('My age: $myAge');
   
-  // This would cause a compile-time error:
-  // String uninitializedName; // Error: must be initialized
+  // This would cause an error:
+  // String uninitializedName; // Error: must give it a value
   
-  // 2. Nullable variables (can be null)
+  // 2. Variables that can be empty (nullable)
   String? nickname;
   int? score;
   
-  print('Nickname: $nickname'); // Prints: null
-  print('Score: $score');       // Prints: null
+  print('Nickname: $nickname'); // Prints: null (empty)
+  print('Score: $score');       // Prints: null (empty)
   
-  // Assigning values to nullable variables
-  nickname = 'Johnny';
+  // Giving values to nullable variables
+  nickname = 'Ommy';
   score = 95;
   
-  print('After assignment:');
+  print('After giving values:');
   print('Nickname: $nickname');
   print('Score: $score');
   
-  // 3. Working with nullable variables safely
+  // 3. Working safely with nullable variables
   String? email;
   
-  // Safe access with null check
+  // Safe way to check if email exists
   if (email != null) {
     print('Email: ${email.toUpperCase()}');
   } else {
     print('Email not provided');
   }
   
-  // Assigning email
-  email = 'john@example.com';
+  // Giving email a value
+  email = 'om@example.com';
   
   if (email != null) {
     print('Email: ${email.toUpperCase()}');
@@ -101,21 +109,21 @@ void demonstrateNullSafety() {
   print('');
 }
 
-void demonstrateLateVariables() {
-  print('--- LATE VARIABLES ---');
+void learnAboutLateVariables() {
+  print('--- LATE VARIABLES (Set Later) ---');
   
-  // Late variables are initialized when first accessed
+  // Late variables are like promises - we'll give them a value later
   late String greeting;
-  late int calculatedValue;
+  late int luckyNumber;
   
-  // They're not initialized yet, but we can assign them later
-  greeting = 'Hello, World!';
-  calculatedValue = 42;
+  // Now we're giving them values
+  greeting = 'Namaste from Dart!';
+  luckyNumber = 7;
   
   print('Greeting: $greeting');
-  print('Calculated value: $calculatedValue');
+  print('Lucky number: $luckyNumber');
   
-  // Late variables are useful in Flutter widgets
+  // Late variables are useful in Flutter
   late String userName;
   
   // Simulating getting user name from somewhere
@@ -125,40 +133,40 @@ void demonstrateLateVariables() {
   print('');
 }
 
-void demonstrateNullAwareOperators() {
-  print('--- NULL AWARE OPERATORS ---');
+void learnAboutNullOperators() {
+  print('--- NULL AWARE OPERATORS (Smart Defaults) ---');
   
-  // 1. ?? operator (null coalescing)
+  // 1. ?? operator (use this if that is empty)
   String? firstName;
-  String? lastName = 'Smith';
+  String? lastName = 'Sharma';
   
-  String displayName = firstName ?? 'Unknown';
-  String fullName = firstName ?? 'Unknown' + ' ' + (lastName ?? '');
+  String displayName = firstName ?? 'Guest';
+  String fullName = '${firstName ?? 'Guest'} ${lastName ?? ''}';
   
   print('Display name: $displayName');
   print('Full name: $fullName');
   
-  // 2. ??= operator (null-aware assignment)
+  // 2. ??= operator (give value only if empty)
   String? userEmail;
-  userEmail ??= 'default@example.com';
+  userEmail ??= 'guest@example.com';
   print('User email: $userEmail');
   
   // Won't change if already has a value
   userEmail ??= 'new@example.com';
   print('User email after ??=: $userEmail');
   
-  // 3. ?. operator (null-aware access)
+  // 3. ?. operator (safe access)
   String? text;
   int? length = text?.length; // Safe access, returns null if text is null
   print('Text length: $length');
   
-  text = 'Hello';
+  text = 'Hello Dart!';
   length = text?.length;
   print('Text length after assignment: $length');
   
-  // 4. ! operator (null assertion - use carefully!)
-  String? nullableString = 'This is not null';
-  String nonNullableString = nullableString!; // Asserts it's not null
+  // 4. ! operator (I promise this is not empty - use carefully!)
+  String? nullableString = 'This is not empty';
+  String nonNullableString = nullableString!; // Asserts it's not empty
   
   print('Non-nullable string: $nonNullableString');
   
@@ -184,8 +192,8 @@ void demonstrateNullAwareOperators() {
 // Enum for user roles
 enum UserRole {
   admin,    // 0
-  editor,   // 1
-  viewer,   // 2
+  student,  // 1
+  teacher,  // 2
   guest     // 3
 }
 
@@ -206,8 +214,8 @@ enum AppState {
   empty
 }
 
-// Simple enum for status messages
-enum StatusMessage {
+// Simple enum for message types
+enum MessageType {
   success,
   error,
   warning,
@@ -215,16 +223,16 @@ enum StatusMessage {
 }
 
 // Function to describe user roles
-void describeUserRole(UserRole role) {
+void describeMyRole(UserRole role) {
   switch (role) {
     case UserRole.admin:
-      print('Admin has full access to all features');
+      print('Admin has full access to everything');
       break;
-    case UserRole.editor:
-      print('Editor can create and modify content');
+    case UserRole.student:
+      print('Student can access learning materials');
       break;
-    case UserRole.viewer:
-      print('Viewer can only read content');
+    case UserRole.teacher:
+      print('Teacher can create and manage content');
       break;
     case UserRole.guest:
       print('Guest has limited access');
@@ -232,19 +240,19 @@ void describeUserRole(UserRole role) {
   }
 }
 
-// Function to handle status messages
-void handleStatusMessage(StatusMessage message) {
+// Function to show messages
+void showMessage(MessageType message) {
   switch (message) {
-    case StatusMessage.success:
-      print('✅ Success: Operation completed successfully');
+    case MessageType.success:
+      print('✅ Success: Everything worked perfectly!');
       break;
-    case StatusMessage.error:
+    case MessageType.error:
       print('❌ Error: Something went wrong');
       break;
-    case StatusMessage.warning:
+    case MessageType.warning:
       print('⚠️ Warning: Please check your input');
       break;
-    case StatusMessage.info:
+    case MessageType.info:
       print('ℹ️ Info: Here is some information');
       break;
   }
@@ -253,7 +261,7 @@ void handleStatusMessage(StatusMessage message) {
 // Helper function to simulate getting user name
 String getUserName() {
   // Simulate some processing time
-  return 'John Doe';
+  return 'Om Sharma';
 }
 
 // User class for null safety examples
@@ -276,9 +284,9 @@ User? getUser() {
   
   if (userExists) {
     return User(
-      name: 'Alice Johnson',
-      email: 'alice@example.com',
-      age: 28,
+      name: 'Abhishek Kumar',
+      email: 'abhishek@example.com',
+      age: 22,
     );
   } else {
     return null;

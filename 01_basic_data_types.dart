@@ -1,61 +1,70 @@
-// Basic Data Types in Dart
-// This program demonstrates the fundamental data types available in Dart
-// and how to use them effectively in your applications.
+// Basic Data Types in Dart - Simple Examples for Beginners
+// This program shows the basic building blocks of Dart programming
 
 void main() {
-  print('=== Dart Basic Data Types Demo ===\n');
+  print('=== Welcome to Dart Basics! ===\n');
   
-  // Integer type - for whole numbers
-  int age = 25;
+  // Let's learn about different types of data we can store
+  
+  // 1. Text (String) - for names, messages, etc.
+  String myName = 'Om';
+  String friendName = 'Abhishek';
+  String message = 'Hello from Dart!';
+  
+  print('My name is: $myName');
+  print('My friend is: $friendName');
+  print('Message: $message');
+  
+  // 2. Numbers (int) - for whole numbers like age, count
+  int myAge = 20;
+  int friendsCount = 5;
   int year = 2024;
-  print('Age: $age years old');
+  
+  print('\nMy age: $myAge');
+  print('Number of friends: $friendsCount');
   print('Current year: $year');
   
-  // Double type - for decimal numbers
-  double height = 5.9;
-  double weight = 68.5;
-  print('Height: ${height} feet');
-  print('Weight: ${weight} kg');
+  // 3. Decimal numbers (double) - for height, weight, price
+  double myHeight = 5.8;
+  double myWeight = 65.5;
+  double movieTicketPrice = 250.0;
   
-  // String type - for text
-  String name = 'John Doe';
-  String city = 'New York';
-  print('Name: $name');
-  print('City: $city');
+  print('\nMy height: ${myHeight} feet');
+  print('My weight: ${myWeight} kg');
+  print('Movie ticket price: Rs. ${movieTicketPrice}');
   
-  // Boolean type - for true/false values
+  // 4. True/False (bool) - for yes/no questions
   bool isStudent = true;
   bool isWorking = false;
-  print('Is student: $isStudent');
-  print('Is working: $isWorking');
+  bool likesCoding = true;
   
-  // var keyword - Dart infers the type automatically
-  var favoriteColor = 'Blue';  // Dart knows this is a String
-  var luckyNumber = 7;         // Dart knows this is an int
-  print('Favorite color: $favoriteColor');
+  print('\nAm I a student? $isStudent');
+  print('Am I working? $isWorking');
+  print('Do I like coding? $likesCoding');
+  
+  // 5. Let Dart guess the type (var) - Dart is smart!
+  var favoriteColor = 'Blue';
+  var luckyNumber = 7;
+  var isHappy = true;
+  
+  print('\nFavorite color: $favoriteColor');
   print('Lucky number: $luckyNumber');
+  print('Am I happy? $isHappy');
   
-  // dynamic keyword - can change type at runtime (use sparingly!)
-  dynamic flexibleVariable = 42;
-  print('Dynamic variable (int): $flexibleVariable');
+  // 6. Values that can't change (final) - like your birth date
+  final birthYear = 2004;
+  final birthPlace = 'Mumbai';
   
-  flexibleVariable = 'Now I am a string!';
-  print('Dynamic variable (String): $flexibleVariable');
+  print('\nBirth year: $birthYear');
+  print('Birth place: $birthPlace');
   
-  // final keyword - runtime constant (value set once)
-  final currentTime = DateTime.now();
-  print('Current time: $currentTime');
+  // 7. Values that never change (const) - like mathematical constants
+  const PI = 3.14;
+  const GRAVITY = 9.8;
   
-  // const keyword - compile-time constant (value known at compile time)
-  const PI = 3.14159;
-  const GRAVITY = 9.81;
-  print('PI: $PI');
+  print('\nValue of PI: $PI');
   print('Gravity: ${GRAVITY} m/s²');
   
-  print('\n=== Type Information ===');
-  print('age is ${age.runtimeType}');
-  print('height is ${height.runtimeType}');
-  print('name is ${name.runtimeType}');
-  print('isStudent is ${isStudent.runtimeType}');
-  print('favoriteColor is ${favoriteColor.runtimeType}');
+  print('\n=== Great! You learned about data types ===');
+  print('Next: Learn about functions!');
 }

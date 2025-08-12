@@ -1,90 +1,83 @@
-// Functions in Dart - Different Ways to Define and Use Functions
-// This program shows various function patterns commonly used in Dart and Flutter
+// Functions in Dart - Simple Examples for Beginners
+// Functions are like recipes - they take ingredients and give you results!
 
 void main() {
-  print('=== Dart Functions Demo ===\n');
+  print('=== Learning Functions in Dart ===\n');
   
-  // 1. Basic function with positional parameters
-  greetUser('Alice', 25);
+  // 1. Simple function call - like saying hello to someone
+  sayHello('Om');
+  sayHello('Abhishek');
   
-  // 2. Function with named parameters
-  printUserInfo(name: 'Bob', age: 30, city: 'London');
-  printUserInfo(name: 'Charlie'); // Using default values
-  
-  // 3. Arrow function (shorthand syntax)
-  int sum = addNumbers(10, 20);
-  print('Sum of 10 + 20 = $sum');
-  
-  // 4. Function with optional positional parameters
-  displayUser('David');
-  displayUser('Eva', 'Paris');
-  
-  // 5. Function returning a value
-  String greeting = getGreeting('Frank');
+  // 2. Function that gives us information back
+  String greeting = getGreeting('Akshit');
   print(greeting);
   
-  // 6. Function with multiple return types
-  var result = calculateArea(5.0, 3.0);
-  print('Area: $result');
+  // 3. Function that does math for us
+  int total = addNumbers(10, 20);
+  print('10 + 20 = $total');
   
-  // 7. Higher-order function (function that takes another function)
-  List<int> numbers = [1, 2, 3, 4, 5];
-  numbers.forEach((number) => print('Number: $number'));
+  int product = multiplyNumbers(5, 6);
+  print('5 × 6 = $product');
   
-  // 8. Function with list parameter
-  List<String> fruits = ['Apple', 'Banana', 'Orange'];
-  printFruits(fruits);
+  // 4. Function that checks if someone is old enough
+  checkAge('Kartik', 18);
+  checkAge('Hardik', 15);
   
-  print('\n=== Function Types ===');
-  print('addNumbers function type: ${addNumbers.runtimeType}');
-  print('greetUser function type: ${greetUser.runtimeType}');
+  // 5. Function that shows student information
+  showStudentInfo('Anand', 'Computer Science', 85);
+  
+  print('\n=== Functions are like helpers! ===');
+  print('They make your code organized and reusable.');
 }
 
-// Basic function with positional parameters
-// These are the most common type - parameters must be provided in order
-void greetUser(String name, int age) {
-  print('Hello $name! You are $age years old.');
+// Simple function that says hello
+// This function takes a name and prints a greeting
+void sayHello(String name) {
+  print('Hello $name! How are you today?');
 }
 
-// Function with named parameters
-// Parameters are specified by name when calling - order doesn't matter
-// Required parameters must be provided, optional ones can use defaults
-void printUserInfo({
-  required String name,           // Must provide this
-  int age = 18,                  // Optional with default
-  String city = 'Unknown'         // Optional with default
-}) {
-  print('User: $name, Age: $age, City: $city');
+// Function that returns a greeting message
+// This function gives us back a string we can use
+String getGreeting(String name) {
+  return 'Welcome to Dart programming, $name!';
 }
 
-// Arrow function - great for simple one-liners
-// This is equivalent to: int addNumbers(int a, int b) { return a + b; }
-int addNumbers(int a, int b) => a + b;
+// Function that adds two numbers
+// This function takes two numbers and gives us their sum
+int addNumbers(int a, int b) {
+  return a + b;
+}
 
-// Function with optional positional parameters
-// Parameters in square brackets are optional
-void displayUser(String name, [String? city]) {
-  print('Name: $name');
-  if (city != null) {
-    print('City: $city');
+// Function that multiplies two numbers
+int multiplyNumbers(int a, int b) {
+  return a * b;
+}
+
+// Function that checks if someone is old enough to drive
+void checkAge(String name, int age) {
+  if (age >= 18) {
+    print('$name, you are $age years old. You can drive!');
   } else {
-    print('City: Not specified');
+    print('$name, you are $age years old. You need to wait ${18 - age} more years to drive.');
   }
 }
 
-// Function returning a value
-String getGreeting(String name) {
-  return 'Welcome to Dart, $name!';
-}
-
-// Function returning different types using var/dynamic
-// In practice, you'd usually specify the exact return type
-var calculateArea = (double length, double width) => length * width;
-
-// Function taking a list as parameter
-void printFruits(List<String> fruits) {
-  print('\nFruits list:');
-  for (int i = 0; i < fruits.length; i++) {
-    print('${i + 1}. ${fruits[i]}');
+// Function that shows student information
+void showStudentInfo(String name, String course, int marks) {
+  print('\nStudent Information:');
+  print('Name: $name');
+  print('Course: $course');
+  print('Marks: $marks out of 100');
+  
+  if (marks >= 90) {
+    print('Grade: A+ (Excellent!)');
+  } else if (marks >= 80) {
+    print('Grade: A (Very Good!)');
+  } else if (marks >= 70) {
+    print('Grade: B (Good!)');
+  } else if (marks >= 60) {
+    print('Grade: C (Pass)');
+  } else {
+    print('Grade: F (Need to improve)');
   }
 }

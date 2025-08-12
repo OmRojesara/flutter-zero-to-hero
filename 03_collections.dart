@@ -1,201 +1,146 @@
-// Collections in Dart - Lists, Sets, and Maps
-// This program demonstrates how to work with different collection types
-// that are fundamental to Dart programming and Flutter development
+// Collections in Dart - Simple Examples for Beginners
+// Collections are like containers that hold multiple items
 
 void main() {
-  print('=== Dart Collections Demo ===\n');
+  print('=== Learning Collections in Dart ===\n');
   
-  demonstrateLists();
-  demonstrateSets();
-  demonstrateMaps();
-  demonstrateCollectionOperations();
+  // 1. Lists - like a shopping list with items in order
+  learnAboutLists();
+  
+  // 2. Sets - like a collection of unique items (no duplicates)
+  learnAboutSets();
+  
+  // 3. Maps - like a phone book with names and numbers
+  learnAboutMaps();
+  
+  print('\n=== Collections help organize data! ===');
 }
 
-void demonstrateLists() {
-  print('--- LISTS ---');
+void learnAboutLists() {
+  print('--- LISTS (Ordered items) ---');
   
-  // 1. Creating lists - different ways to initialize
-  List<String> fruits = ['Apple', 'Banana', 'Mango'];
-  var numbers = <int>[1, 2, 3, 4, 5];  // Type inference
-  List<double> prices = List.filled(3, 0.0);  // Fixed-size list
+  // Creating a list of friends
+  List<String> friends = ['Om', 'Abhishek', 'Akshit'];
+  print('My friends: $friends');
   
-  print('Fruits: $fruits');
-  print('Numbers: $numbers');
-  print('Prices: $prices');
+  // Adding a new friend
+  friends.add('Kartik');
+  print('After adding Kartik: $friends');
   
-  // 2. Adding elements
-  fruits.add('Orange');           // Add single element
-  fruits.addAll(['Grape', 'Kiwi']); // Add multiple elements
-  print('After adding: $fruits');
+  // Adding multiple friends at once
+  friends.addAll(['Hardik', 'Anand']);
+  print('After adding more friends: $friends');
   
-  // 3. Inserting at specific positions
-  fruits.insert(1, 'Pineapple');
-  print('After inserting at index 1: $fruits');
+  // Removing a friend
+  friends.remove('Abhishek');
+  print('After removing Abhishek: $friends');
   
-  // 4. Removing elements
-  fruits.remove('Banana');        // Remove by value
-  fruits.removeAt(0);            // Remove by index
-  print('After removing: $fruits');
+  // Checking how many friends I have
+  print('Total friends: ${friends.length}');
   
-  // 5. Accessing elements
-  print('First fruit: ${fruits.first}');
-  print('Last fruit: ${fruits.last}');
-  print('Fruit at index 1: ${fruits[1]}');
+  // Getting the first and last friend
+  print('First friend: ${friends.first}');
+  print('Last friend: ${friends.last}');
   
-  // 6. List properties
-  print('List length: ${fruits.length}');
-  print('Is empty: ${fruits.isEmpty}');
-  print('Is not empty: ${fruits.isNotEmpty}');
-  
-  // 7. Iterating through lists
-  print('\nIterating through fruits:');
-  for (int i = 0; i < fruits.length; i++) {
-    print('${i + 1}. ${fruits[i]}');
+  // Going through each friend one by one
+  print('\nMy friends list:');
+  for (int i = 0; i < friends.length; i++) {
+    print('${i + 1}. ${friends[i]}');
   }
   
-  print('Using for-in loop:');
-  for (String fruit in fruits) {
-    print('Fruit: $fruit');
+  // Another way to go through friends
+  print('\nUsing for-in loop:');
+  for (String friend in friends) {
+    print('Friend: $friend');
   }
   
-  print('Using forEach:');
-  fruits.forEach((fruit) => print('Fruit: $fruit'));
-  
-  // 8. List transformations
-  List<String> upperFruits = fruits.map<String>((fruit) => fruit.toUpperCase()).toList();
-  print('Uppercase fruits: $upperFruits');
-  
-  List<String> longFruits = fruits.where((fruit) => fruit.length > 4).toList();
-  print('Fruits with more than 4 letters: $longFruits');
+  print('');
 }
 
-void demonstrateSets() {
-  print('\n--- SETS ---');
+void learnAboutSets() {
+  print('--- SETS (Unique items only) ---');
   
-  // Sets store unique values - no duplicates allowed
-  Set<int> uniqueNumbers = {1, 2, 3, 4, 5};
-  Set<String> programmingLanguages = {'Dart', 'Flutter', 'Java', 'Python'};
+  // Creating a set of favorite colors
+  Set<String> favoriteColors = {'Blue', 'Red', 'Green'};
+  print('My favorite colors: $favoriteColors');
   
-  print('Unique numbers: $uniqueNumbers');
-  print('Programming languages: $programmingLanguages');
+  // Adding a new color
+  favoriteColors.add('Yellow');
+  print('After adding Yellow: $favoriteColors');
   
-  // Adding elements
-  uniqueNumbers.add(6);
-  uniqueNumbers.addAll({7, 8, 9});
-  print('After adding: $uniqueNumbers');
+  // Adding a color that already exists (won't add duplicate)
+  favoriteColors.add('Blue');
+  print('After trying to add Blue again: $favoriteColors');
   
-  // Adding duplicate won't change the set
-  uniqueNumbers.add(1);  // 1 already exists
-  print('After adding duplicate 1: $uniqueNumbers');
+  // Creating another set
+  Set<String> moreColors = {'Purple', 'Orange', 'Blue'};
   
-  // Set operations
-  Set<int> evenNumbers = {2, 4, 6, 8, 10};
-  Set<int> oddNumbers = {1, 3, 5, 7, 9};
+  // Combining both sets
+  Set<String> allColors = favoriteColors.union(moreColors);
+  print('All colors combined: $allColors');
   
-  Set<int> union = evenNumbers.union(oddNumbers);
-  Set<int> intersection = evenNumbers.intersection(oddNumbers);
-  Set<int> difference = evenNumbers.difference(oddNumbers);
+  // Finding colors that are in both sets
+  Set<String> commonColors = favoriteColors.intersection(moreColors);
+  print('Colors in both sets: $commonColors');
   
-  print('Even numbers: $evenNumbers');
-  print('Odd numbers: $oddNumbers');
-  print('Union: $union');
-  print('Intersection: $intersection');
-  print('Difference (even - odd): $difference');
-  
-  // Iterating through sets
-  print('\nProgramming languages:');
-  programmingLanguages.forEach((language) => print('Language: $language'));
+  print('');
 }
 
-void demonstrateMaps() {
-  print('\n--- MAPS ---');
+void learnAboutMaps() {
+  print('--- MAPS (Key-Value pairs) ---');
   
-  // Maps store key-value pairs
-  Map<String, String> countryCapitals = {
-    'India': 'New Delhi',
-    'USA': 'Washington DC',
-    'France': 'Paris',
-    'Japan': 'Tokyo'
-  };
-  
+  // Creating a map of student names and their ages
   Map<String, int> studentAges = {
-    'Alice': 20,
-    'Bob': 22,
-    'Charlie': 19
+    'Om': 20,
+    'Abhishek': 22,
+    'Akshit': 19,
+    'Kartik': 21
   };
   
-  print('Country capitals: $countryCapitals');
   print('Student ages: $studentAges');
   
-  // Adding/updating entries
-  countryCapitals['Germany'] = 'Berlin';
-  countryCapitals['India'] = 'New Delhi';  // Updates existing key
+  // Adding a new student
+  studentAges['Hardik'] = 20;
+  print('After adding Hardik: $studentAges');
   
-  print('After adding Germany: $countryCapitals');
+  // Finding someone's age
+  print('Om\'s age: ${studentAges['Om']}');
   
-  // Accessing values
-  print('Capital of India: ${countryCapitals['India']}');
-  print('Capital of UK: ${countryCapitals['UK']}');  // Returns null
-  
-  // Safe access with default value
-  String ukCapital = countryCapitals['UK'] ?? 'Unknown';
-  print('Capital of UK (with default): $ukCapital');
-  
-  // Checking if key exists
-  if (countryCapitals.containsKey('France')) {
-    print('France is in our map');
+  // Checking if someone exists
+  if (studentAges.containsKey('Anand')) {
+    print('Anand\'s age: ${studentAges['Anand']}');
+  } else {
+    print('Anand is not in our list');
   }
   
-  // Removing entries
-  countryCapitals.remove('Japan');
-  print('After removing Japan: $countryCapitals');
-  
-  // Iterating through maps
-  print('\nCountry capitals:');
-  countryCapitals.forEach((country, capital) {
-    print('$country -> $capital');
+  // Going through each student and their age
+  print('\nStudent information:');
+  studentAges.forEach((name, age) {
+    print('$name is $age years old');
   });
   
-  // Using entries
-  print('\nUsing entries:');
-  for (var entry in countryCapitals.entries) {
-    print('${entry.key}: ${entry.value}');
-  }
+  // Creating a map of subjects and marks
+  Map<String, int> subjectMarks = {
+    'Math': 85,
+    'Science': 90,
+    'English': 78,
+    'History': 92
+  };
   
-  // Map transformations
-  Map<String, String> upperCapitals = countryCapitals.map(
-    (country, capital) => MapEntry(country, capital.toUpperCase())
-  );
-  print('Uppercase capitals: $upperCapitals');
-}
-
-void demonstrateCollectionOperations() {
-  print('\n--- COLLECTION OPERATIONS ---');
+  print('\nSubject marks: $subjectMarks');
   
-  // Working with different collection types together
-  List<String> names = ['Alice', 'Bob', 'Charlie', 'David'];
-  Set<String> uniqueNames = names.toSet();  // Convert list to set
-  Map<String, int> nameLengths = Map.fromIterables(
-    names, 
-    names.map((name) => name.length)
-  );
+  // Finding the highest mark
+  int highestMark = 0;
+  String bestSubject = '';
   
-  print('Names list: $names');
-  print('Unique names set: $uniqueNames');
-  print('Name lengths map: $nameLengths');
+  subjectMarks.forEach((subject, mark) {
+    if (mark > highestMark) {
+      highestMark = mark;
+      bestSubject = subject;
+    }
+  });
   
-  // Filtering and mapping
-  List<String> longNames = names.where((name) => name.length > 4).cast<String>().toList();
-  List<int> nameLengthsList = names.map<int>((name) => name.length).toList();
+  print('Best subject: $bestSubject with $highestMark marks');
   
-  print('Names longer than 4 characters: $longNames');
-  print('Length of each name: $nameLengthsList');
-  
-  // Sorting
-  List<String> sortedNames = List.from(names)..sort();
-  print('Sorted names: $sortedNames');
-  
-  // Reversing
-  List reversedNames = List.from(names).reversed.toList();
-  print('Reversed names: $reversedNames');
+  print('');
 }

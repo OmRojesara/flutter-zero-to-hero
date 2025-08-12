@@ -1,0 +1,77 @@
+import 'package:flutter/material.dart';
+
+// STEP 1: Stateful example - counter increases when button is pressed
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+  
+  // Creates the mutable state object
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+// The State class holds changing data (counter)
+class _MyAppState extends State<MyApp> {
+  int counter = 0; // STEP 2: variable that changes on button press
+
+  // STEP 3: build() describes the UI
+  @override
+  Widget build(BuildContext context) {
+    // Show current counter value
+    final Text counterText = Text(
+      'Counter: $counter',
+      style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+    );
+
+    // Button that increases counter by 1
+    final ElevatedButton incrementButton = ElevatedButton(
+      onPressed: () {
+        // setState() tells Flutter to rebuild the UI with new data
+        setState(() {
+          counter++;
+        });
+      },
+      child: const Text('Increase'),
+    );
+
+    // Center the text on screen
+    final Center centeredText = Center(child: counterText);
+
+    // Add some vertical space
+    const SizedBox space = SizedBox(height: 20);
+
+    // Vertical arrangement: text, space, button
+    final Column column = Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        centeredText,
+        space,
+        incrementButton,
+      ],
+    );
+
+    // Top app bar with title
+    final AppBar appBar = AppBar(
+      title: const Text('Stateful Counter'),
+    );
+
+    // Screen structure
+    final Scaffold firstScreen = Scaffold(
+      appBar: appBar,
+      body: column,
+    );
+
+    // Root material app
+    final MaterialApp myApp = MaterialApp(
+      title: 'Counter App',
+      home: firstScreen,
+      debugShowCheckedModeBanner: false,
+    );
+
+    return myApp; // send the UI to screen
+  }
+}
+
+// STEP 4: Entry point
+void main() {
+  runApp(const MyApp());
+}
